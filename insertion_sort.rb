@@ -9,9 +9,11 @@ def insertion_sort(nums)
     arr.each_with_index do |i, arr_index|
       if num < i
         insert(arr, num, arr_index)
+        break
       elsif arr_index == (arr.length)-1
         # binding.pry
         arr.push(num)
+        break
       end
     end
   end
@@ -20,8 +22,8 @@ end
 
 
 def insert(arr, val, index)
-  arr[index..-1].each_with_index do |num, arr_index|
-    arr[arr_index+1] = num
+  for num in (arr.length - 1).downto(index)
+    arr[num+1] = arr[num]
   end
   arr[index] = val
 end
