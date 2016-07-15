@@ -11,13 +11,31 @@ def insertion_sort(nums)
         insert(arr, num, arr_index)
         break
       elsif arr_index == (arr.length)-1
-        # binding.pry
         arr.push(num)
         break
       end
     end
   end
   arr
+end
+
+
+def insert_sort(nums)
+  count = 0
+  nums[count + 1..-1].each do |num|
+    nums[0..count].each_with_index do |ref, arr_index|
+      if num < ref
+        insert(nums, num, arr_index)
+        count += 1
+        break
+      elsif arr_index == count
+        insert(nums, num, arr_index)
+        count += 1
+        break
+      end
+    end
+  end
+  nums
 end
 
 
@@ -30,4 +48,5 @@ end
 
 
 
-p insertion_sort([1,3,2,5,7,4,10])
+p insert_sort([1,3,2,5,7,4,10])
+p insert_sort([1,4,7,1,3,4,5,-12,0,12,14,5,8,5,1,2,3,-9])
